@@ -80,3 +80,40 @@ func imprimirLista (lista: Lista) {
     print()
     return
 }
+
+func inverterPrefixo (tam: Int, lista: Lista) {
+    // Inverte o prefixo de tamanho tam
+    // Considera que o tam é um tamanho válido
+    if tam == 1 {
+        return
+    }
+    var noAtual: Node? = lista.head
+    var aux: Node? = noAtual
+    var cont: Int = 0
+    var prox: Node? = nil
+    var last: Node? = nil
+    var first: Node? = lista.head
+    while noAtual != nil {
+        noAtual = noAtual?.next
+        aux?.next = aux?.prev
+        if cont < tam-1 {
+            aux?.prev = noAtual
+        }
+        cont+=1
+        if cont == tam-1 {
+            prox = noAtual?.next
+            noAtual?.next = aux
+            noAtual?.prev = nil
+            last = noAtual
+            break
+        }
+        aux = noAtual
+    }
+    first?.next = prox
+    prox?.prev = first
+    lista.head = last
+    if prox == nil {
+        lista.tail = first
+    }
+    return
+}

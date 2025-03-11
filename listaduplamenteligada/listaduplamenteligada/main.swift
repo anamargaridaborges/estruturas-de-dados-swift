@@ -7,6 +7,7 @@ while true {
     print("1 - Insira um elemento na lista")
     print("2 - Remova um elemento da lista")
     print("3 - Imprima os valores da lista")
+    print("4 - Inverta o prefixo da lista")
     let opcao = Int(readLine()!)
     if opcao == 0 {
         break
@@ -22,6 +23,10 @@ while true {
     }
     if opcao == 3 {
         imprimirLista(lista: lista)
+    }
+    if opcao == 4 {
+        let tam = Int(readLine()!)
+        inverterPrefixo(tam: tam!, lista: lista)
     }
 }
 
